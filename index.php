@@ -1,5 +1,4 @@
 <?php
-phpinfo(); die;
 require_once 'functions.php';
 require_once 'model/database.php';
 
