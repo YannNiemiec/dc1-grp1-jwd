@@ -5,7 +5,7 @@
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">niemiec.yann@gmail.com</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Mon profile</a>
-                <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Déconnexion</a>
+                <a class="dropdown-item" href="logout.php"><i class="fa fa-sign-out"></i>Déconnexion</a>
         </li>
     </ul>
 </nav>
