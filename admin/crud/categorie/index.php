@@ -27,7 +27,16 @@ $liste_categorie = getAllEntities("categorie");
         <?php foreach ($liste_categorie AS $categorie): ?>
         <tr>
             <td><?php echo $categorie["titre"]?></td>
-            <td></td>
+            <td>
+                <a href="update.php?id=<?php echo $categorie['id'] ?>" class="btn btn-success">
+                    <i class="fa fa-edit"></i>
+                    Update
+                </a>
+                <a href="delete_query.php?id=<?php echo $categorie['id'] ?>" class="btn btn-danger">
+                    <i class="fa fa-minus"></i>
+                    Supprimer
+                </a>
+            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>

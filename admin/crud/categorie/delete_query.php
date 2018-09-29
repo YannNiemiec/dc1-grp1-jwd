@@ -1,8 +1,7 @@
 <?php
+require_once '../../security.php';
+$id = $_GET['id'];
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+deleteCategorie($id);
 
+header('Location: index.php');

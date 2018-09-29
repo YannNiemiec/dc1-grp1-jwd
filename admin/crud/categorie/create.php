@@ -2,7 +2,7 @@
 
 <h1>Ajout d'une catégorie</h1>
 
-<form action="create_query.php" methode="POST">
+<form action="create_query.php" method="POST">
     <div class="form-group">
         <label>Titre</label>
         <input type="text" name="titre" class="form-control" placeholder="Titre" required>
