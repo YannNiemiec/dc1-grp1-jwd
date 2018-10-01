@@ -1,6 +1,7 @@
 <?php
 require_once '../../security.php';
-$id = $_GET['id'];
+
+$id = $_POST['id'];
 $titre = $_POST["titre"];
 
 updateCategorie($titre, $id);

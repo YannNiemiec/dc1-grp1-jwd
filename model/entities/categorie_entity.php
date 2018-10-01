@@ -13,7 +13,7 @@ function insertCategorie(string $titre) {
 function updateCategorie(string $titre, $id) {
     global $connection;
 
-    $query = "UPDATE categorie SET categorie.titre = (:titre) WHERE categorie.id = :id";
+    $query = "UPDATE categorie SET titre = (:titre) WHERE id = :id";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':titre', $titre);
@@ -21,12 +21,3 @@ function updateCategorie(string $titre, $id) {
     $stmt->execute();
 }
 
-function deleteCategorie($id) {
-    global $connection;
-
-    $query = "DELETE FROM categorie WHERE categorie.id = :id";
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
-}

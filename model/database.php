@@ -11,7 +11,7 @@ $connection = new PDO("mysql:host=" . $db_host . ";dbname=" . $db_name, $db_user
 $files = scandir(__DIR__ . "/entities/");
 foreach ($files as $file) {
     $filepath = __DIR__ . "/entities/" . $file;
-    if (is_file($filepath) && pathinfo($filepath, PATHINFO_EXTENSION) === "php"){
+    if (is_file($filepath) && pathinfo($filepath, PATHINFO_EXTENSION) === "php") {
         require_once $filepath;
     }
 }
@@ -44,4 +44,21 @@ function getAllEntities(string $table): array {
     $stmt->execute();
 
     return $stmt->fetchAll();
+}
+
+function deleteEntity(string $table, int $id): ?Exception {
+    global $connection;
+
+    $query = "DELETE FROM $table WHERE id = :id";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':id', $id);
+
+    try {
+        $stmt->execute();
+    } catch (PDOException $ex) {
+        return $ex;
+    }
+    
+    return null;
 }
