@@ -75,3 +75,16 @@ function getAllPhotosByCategorie(int $id): array {
 
     return $stmt->fetchAll();
 }
+
+function insertPhoto(string $titre, $image, $description, $categorie_id) {
+    global $connection;
+
+    $query = "INSERT INTO photo (titre, image, nb_likes, date_creation, description, categorie_id) VALUES (:titre, :image, 0, NOW(), :description, :categorie_id)";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':titre', $titre);
+    $stmt->bindParam(':image', $image);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':categorie_id', $categorie_id);
+    $stmt->execute();
+}

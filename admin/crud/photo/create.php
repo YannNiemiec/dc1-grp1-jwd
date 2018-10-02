@@ -1,4 +1,8 @@
-<?php require_once '../../layout/header.php' ?>
+<?php
+require_once '../../layout/header.php';
+$liste_categorie = getAllEntities('categorie');
+$liste_tag = getAllEntities('tag');
+?>
 
 <h1>Ajout d'une photo</h1>
 
@@ -19,13 +23,17 @@
     <div class="form-group">
         <label>Catégorie</label>
         <select name="categorie_id" class="form-control">
-            
+            <?php foreach ($liste_categorie as $categorie) :  ?>
+            <option value ='<?php echo $categorie['id']?>'><?php echo $categorie['titre']?></option>
+            <?php endforeach;  ?>
         </select>
     </div>
      <div class="form-group">
         <label>Tags</label>
         <select name="tags_id" class="form-control" multiple>
-            
+            <?php foreach ($liste_tag as $tag) :  ?>
+                <option value ='<?php echo $tag['id']?>'><?php echo $tag['titre']?></option>
+            <?php endforeach;  ?>
         </select>
     </div>
     
@@ -33,6 +41,7 @@
         <i class="fa fa-check"></i>
         Ajouter
     </button>
+
 </form>
 
 <?php require_once '../../layout/footer.php' ?>

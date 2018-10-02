@@ -46,7 +46,7 @@ function getAllEntities(string $table): array {
     return $stmt->fetchAll();
 }
 
-function deleteEntity(string $table, int $id): ?Exception {
+function deleteEntity(string $table, int $id) {
     global $connection;
 
     $query = "DELETE FROM $table WHERE id = :id";
