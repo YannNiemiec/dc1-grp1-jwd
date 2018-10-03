@@ -6,7 +6,7 @@ $liste_tag = getAllEntities('tag');
 
 <h1>Ajout d'une photo</h1>
 
-<form action="create_query.php" method="POST">
+<form action="create_query.php" method="POST" enctype="multipart/form-data">
     
     <div class="form-group">
         <label>Titre</label>
@@ -24,15 +24,15 @@ $liste_tag = getAllEntities('tag');
         <label>Catégorie</label>
         <select name="categorie_id" class="form-control">
             <?php foreach ($liste_categorie as $categorie) :  ?>
-            <option value ='<?php echo $categorie['id']?>'><?php echo $categorie['titre']?></option>
+            <option value="<?php echo $categorie['id']?>"><?php echo $categorie['titre']?></option>
             <?php endforeach;  ?>
         </select>
     </div>
      <div class="form-group">
         <label>Tags</label>
-        <select name="tags_id" class="form-control" multiple>
+        <select name="tag_ids[]" class="form-control" multiple>
             <?php foreach ($liste_tag as $tag) :  ?>
-                <option value ='<?php echo $tag['id']?>'><?php echo $tag['titre']?></option>
+                <option value="<?php echo $tag['id']?>"><?php echo $tag['titre']?></option>
             <?php endforeach;  ?>
         </select>
     </div>

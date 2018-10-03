@@ -18,7 +18,7 @@ if (isset($_GET['errcode'])) {
 ?>
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Gestion des catégories</h1>
+    <h1 class="h2">Gestion des photos</h1>
 </div>
 
 <a href="create.php" class="btn btn-success">
@@ -48,7 +48,7 @@ if (isset($_GET['errcode'])) {
         <?php foreach ($liste_photos AS $photo): ?>
             <tr>
                 <td><?php echo $photo["titre"] ?></td>
-                <td><img src="../../../images/<?php echo $photo["image"] ?>" class="img-thumbnail"></td>
+                <td><img src="../../../uploads/<?php echo $photo["image"] ?>" class="img-thumbnail"></td>
                 <td><?php echo $photo["categorie"] ?></td>
                 <td class="actions">
                     <a href="update.php?id=<?php echo $photo['id'] ?>" class="btn btn-primary">
