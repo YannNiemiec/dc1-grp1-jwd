@@ -105,3 +105,33 @@ function InsertPhotoHasTag(int $photo_id, int $tag_id) {
     $stmt->bindParam(':tag_id', $tag_id);
     $stmt->execute();
 }
+
+function updatePhoto(int $id, string $titre, string $image, string $description, int $categorie_id, array $tag_ids) {
+    global $connection;
+
+    $query = "UPDATE photo SET titre = :titre, image = :image, description = :description, categorie_id = :categorie_id WHERE id = :id";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':titre', $titre);
+    $stmt->bindParam(':image', $image);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':categorie_id', $categorie_id);
+    $stmt->execute();
+    
+    deletePhotoHasTag($id);
+    
+    foreach($tag_ids as $tag_id) {
+        InsertPhotoHasTag($id, $tag_id);
+    }
+}
+
+function deletePhotoHasTag(int $photo_id) {
+    global $connection;
+
+    $query = "DELETE FROM photo_has_tag WHERE photo_id = :photo_id";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':photo_id', $photo_id);
+    $stmt->execute();
+}
